@@ -63,7 +63,7 @@ const Hero = () => {
               className="text-white/60 text-base lg:text-lg max-w-xl mb-8 mx-auto lg:mx-0"
             >
               Full-Stack Developer | Backend Specialist | FastAPI & Node.js | 
-              AI/ML Enthusiast | NIT Puducherry | India
+              AI Engineer | NIT Puducherry | India
             </motion.p>
 
             {/* CTA & Social Links */}
@@ -131,7 +131,7 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-transparent" />
                 <img
                   src={profilePhoto}
-                  alt="gaurav G"
+                  alt="Gaurav G"
                   className="w-full h-full object-cover"
                 />
               </div>
