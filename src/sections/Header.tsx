@@ -37,7 +37,7 @@ const Header = () => {
             className="flex items-center"
           >
             <h1 className="text-2xl lg:text-3xl font-semibold text-white">
-              gaurav <span className="text-green-400">G</span>
+              Gaurav <span className="text-green-400">G</span>
             </h1>
           </motion.a>
 
