@@ -71,7 +71,7 @@ const ShortProfile = () => {
                        hover:border-green-400/30 transition-all duration-300 p-6 group"
           >
             <h3 className="text-lg lg:text-xl font-bold text-white group-hover:translate-x-2 transition-transform duration-300">
-              Fluent in English and Hindi
+              Fluent in English , Tamil and Hindi
             </h3>
             <p className="text-white/50 text-sm mt-2">Communication</p>
           </motion.div>
