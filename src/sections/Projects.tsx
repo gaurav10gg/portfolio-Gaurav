@@ -5,69 +5,53 @@ const Projects = () => {
   const projects = [
     {
       title: 'DevShowcase',
-      description: 'A full-stack developer project discovery platform with JWT auth, upvotes, and comments. Built with React, Node.js, Express, PostgreSQL, and Prisma.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-      tech: [
-        { name: 'React', icon: '⚛️' },
-        { name: 'Node', icon: '🟢' },
-        { name: 'Express', icon: '🚂' },
-        { name: 'PostgreSQL', icon: '🐘' },
-        { name: 'Prisma', icon: '🔷' },
-      ],
+      description:
+        'A developer project discovery platform with JWT auth, upvotes, comments, and a clean full-stack architecture built for real users.',
+      image:
+        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
+      tech: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Prisma'],
       liveUrl: 'https://devshowcase-demo.vercel.app',
       githubUrl: 'https://github.com/gaurav10gg/devshowcase-frontend',
-      hasRead: true,
+      badge: 'Featured',
     },
     {
       title: 'AI-Powered LinkedIn Job Matcher',
-      description: 'Automated job discovery using resume parsing, NLP, and TF-IDF ranking. Scrapes LinkedIn for relevant job postings based on your skills.',
-      image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop',
-      tech: [
-        { name: 'FastAPI', icon: '⚡' },
-        { name: 'Python', icon: '🐍' },
-        { name: 'Playwright', icon: '🎭' },
-        { name: 'NLP', icon: '🤖' },
-        { name: 'Ollama', icon: '🦙' },
-      ],
+      description:
+        'Automated job discovery with resume parsing, NLP ranking, and matching logic to surface more relevant opportunities.',
+      image:
+        'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop',
+      tech: ['FastAPI', 'Python', 'Playwright', 'NLP', 'Ollama'],
       liveUrl: null,
       githubUrl: 'https://github.com/gaurav10gg/AI-Powered-LinkedIn-Job-Matcher',
-      hasRead: true,
+      badge: 'AI',
     },
     {
       title: 'AI Personal Agent',
-      description: 'On-device task automation system with ReAct-style agent loop. Interprets natural language commands and executes real-world tasks through tool-based architecture.',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
-      tech: [
-        { name: 'Python', icon: '🐍' },
-        { name: 'FastAPI', icon: '⚡' },
-        { name: 'LLM', icon: '🧠' },
-        { name: 'SQLite', icon: '📁' },
-        { name: 'AsyncIO', icon: '⚙️' },
-      ],
+      description:
+        'An on-device automation system that interprets natural language tasks and executes them through a tool-based agent loop.',
+      image:
+        'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
+      tech: ['Python', 'FastAPI', 'LLM', 'SQLite', 'AsyncIO'],
       liveUrl: null,
       githubUrl: 'https://github.com/gaurav10gg',
-      hasRead: false,
+      badge: 'Automation',
     },
     {
       title: 'Project Dreaserous',
-      description: 'Interactive FAQ system with Node.js + SQLite backend. Features real-time FAQ insertion and automated email support.',
-      image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop',
-      tech: [
-        { name: 'Node.js', icon: '🟢' },
-        { name: 'SQLite', icon: '📁' },
-        { name: 'HTML', icon: '📄' },
-        { name: 'CSS', icon: '🎨' },
-      ],
+      description:
+        'An interactive FAQ system with a Node.js and SQLite backend, designed for quick updates and automated support flows.',
+      image:
+        'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop',
+      tech: ['Node.js', 'SQLite', 'HTML', 'CSS'],
       liveUrl: null,
       githubUrl: 'https://github.com/gaurav10gg/Project-Dreaserous',
-      hasRead: false,
+      badge: 'Backend',
     },
   ];
 
   return (
     <section id="projects" className="py-16 lg:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +62,17 @@ const Projects = () => {
           A small selection of <span className="text-green-400">recent projects</span>
         </motion.h2>
 
-        {/* Projects Grid */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center text-white/55 max-w-2xl mx-auto"
+        >
+          These projects reflect how I build: practical systems, clear engineering choices,
+          and products made to be used rather than just shown.
+        </motion.p>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
           {projects.map((project, index) => (
             <motion.div
@@ -89,9 +83,10 @@ const Projects = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="relative bg-dark-800/50 rounded-2xl overflow-hidden border border-white/10 
-                            hover:border-green-400/30 transition-all duration-500 shadow-card">
-                {/* Project Image */}
+              <div
+                className="relative bg-dark-800/50 rounded-2xl overflow-hidden border border-white/10
+                            hover:border-green-400/30 transition-all duration-500 shadow-card"
+              >
                 <div className="relative h-48 lg:h-56 overflow-hidden">
                   <img
                     src={project.image}
@@ -101,41 +96,41 @@ const Projects = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-800 via-dark-800/50 to-transparent" />
                 </div>
 
-                {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-white/60 text-sm mb-4 line-clamp-2">
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h3 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    <span className="rounded-full border border-green-400/20 bg-green-400/10 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-green-300">
+                      {project.badge}
+                    </span>
+                  </div>
+
+                  <p className="text-white/60 text-sm mb-4 line-clamp-3">
                     {project.description}
                   </p>
 
-                  {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((t, i) => (
+                    {project.tech.map((tech, i) => (
                       <span
                         key={i}
-                        className="flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-dark-700 
-                                 border border-white/10 text-white/70"
+                        className="px-2 py-1 text-xs rounded-full bg-dark-700 border border-white/10 text-white/70"
                       >
-                        <span>{t.icon}</span>
-                        <span>{t.name}</span>
+                        {tech}
                       </span>
                     ))}
                   </div>
 
-                  {/* Links */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex flex-wrap items-center gap-3">
                       {project.liveUrl && (
                         <a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-green-400 hover:text-green-300 
-                                   transition-colors text-sm font-medium"
+                          className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors text-sm font-medium"
                         >
-                          <span>Check Live Site</span>
+                          <span>Live Demo</span>
                           <ExternalLink className="w-4 h-4" />
                         </a>
                       )}
@@ -144,26 +139,32 @@ const Projects = () => {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-green-400 hover:text-green-300 
-                                   transition-colors text-sm font-medium"
+                          className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors text-sm font-medium"
                         >
-                          <span>Github</span>
+                          <span>GitHub</span>
                           <ExternalLink className="w-4 h-4" />
                         </a>
                       )}
                     </div>
-                    {project.hasRead && (
-                      <button className="p-2 rounded-full border border-white/20 hover:border-green-400 
-                                       hover:bg-green-400/10 transition-all">
+
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full border border-white/20 hover:border-green-400 hover:bg-green-400/10 transition-all"
+                        aria-label={`Open ${project.title}`}
+                      >
                         <BookOpen className="w-4 h-4 text-green-400" />
-                      </button>
+                      </a>
                     )}
                   </div>
                 </div>
 
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 
-                              pointer-events-none bg-gradient-to-t from-green-400/5 to-transparent" />
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500
+                              pointer-events-none bg-gradient-to-t from-green-400/5 to-transparent"
+                />
               </div>
             </motion.div>
           ))}

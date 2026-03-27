@@ -15,8 +15,8 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Professional', href: '#professional', active: true },
-    { name: 'Personal', href: '#personal', active: false },
+    { name: 'About', href: '#about', active: true },
+    { name: 'Projects', href: '#projects', active: false },
     { name: 'Contact', href: '#contact', active: false },
   ];
 
@@ -37,7 +37,7 @@ const Header = () => {
             className="flex items-center"
           >
             <h1 className="text-2xl lg:text-3xl font-semibold text-white">
-              Gaurav<span className="text-green-400">.</span>
+              gaurav <span className="text-green-400">G</span>
             </h1>
           </motion.a>
 

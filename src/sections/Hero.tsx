@@ -34,9 +34,9 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-white/70 text-lg mb-4 font-mono"
+              className="inline-flex items-center gap-2 rounded-full border border-green-400/20 bg-green-400/5 px-4 py-2 text-sm sm:text-base text-white/80 mb-4 font-mono"
             >
-              Software Engineer
+              Backend-focused full-stack developer
             </motion.p>
 
             {/* Main Title */}
@@ -62,22 +62,52 @@ const Hero = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-white/60 text-base lg:text-lg max-w-xl mb-8 mx-auto lg:mx-0"
             >
-              Full-Stack Developer | Backend Specialist | FastAPI & Node.js | 
-              AI Engineer | NIT Puducherry | India
+              I build reliable web products with clean backend architecture, sharp UI execution,
+              and practical AI features. Based in India and currently studying at NIT Puducherry.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.6 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
+            >
+              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
+                FastAPI
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
+                Node.js
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
+                React
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
+                AI workflows
+              </span>
+            </motion.div>
 
             {/* CTA & Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="flex flex-col sm:flex-row items-center gap-6"
+              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
             >
               {/* View CV Button */}
-              <button className="group flex items-center gap-2 px-8 py-3 border border-green-400 text-green-400 rounded-full font-semibold uppercase tracking-wider text-sm hover:bg-green-400 hover:text-dark-900 transition-all duration-300">
-                <span>View CV</span>
+              <a
+                href="mailto:gauravgjee2025@gmail.com"
+                className="group flex items-center gap-2 px-8 py-3 border border-green-400 text-green-400 rounded-full font-semibold uppercase tracking-wider text-sm hover:bg-green-400 hover:text-dark-900 transition-all duration-300"
+              >
+                <span>Contact Me</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
+
+              <a
+                href="#projects"
+                className="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-medium text-white/80 hover:border-green-400/40 hover:text-white transition-all duration-300"
+              >
+                View Projects
+              </a>
 
               {/* Social Icons */}
               <div className="flex items-center gap-3">

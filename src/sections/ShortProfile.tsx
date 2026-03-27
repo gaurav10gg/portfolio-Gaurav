@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const ShortProfile = () => {
+  const [copied, setCopied] = useState(false);
   const techStack = [
     { name: 'ReactJS', opacity: true },
     { name: 'Express', opacity: true },
@@ -11,6 +13,12 @@ const ShortProfile = () => {
     { name: 'MongoDB', opacity: true },
     { name: 'Python', opacity: true },
   ];
+
+  const handleCopyEmail = async () => {
+    await navigator.clipboard.writeText('gauravgjee2025@gmail.com');
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <section id="about" className="py-16 lg:py-24">
@@ -48,7 +56,7 @@ const ShortProfile = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-dark-800 via-dark-800/80 to-transparent" />
               </div>
               <h3 className="text-xl lg:text-2xl font-bold text-white relative z-10 group-hover:translate-x-2 transition-transform duration-300">
-                Full-Stack Developer building scalable backend systems and AI-powered applications
+                Full-stack builder focused on backend quality, product clarity, and useful AI features
               </h3>
             </div>
           </motion.div>
@@ -79,7 +87,7 @@ const ShortProfile = () => {
           >
             <p className="text-white/50 text-sm mb-2">My primary tech stack</p>
             <h3 className="text-lg lg:text-xl font-bold text-white mb-4 group-hover:translate-x-2 transition-transform duration-300">
-              FastAPI, Node.js
+              FastAPI, Node.js, React
             </h3>
             <div className="flex flex-wrap gap-2">
               {techStack.slice(0, 6).map((tech, i) => (
@@ -134,7 +142,7 @@ const ShortProfile = () => {
             </div>
             <p className="text-white/50 text-sm mb-2 relative z-10">The Inside Scoop</p>
             <h3 className="text-lg lg:text-xl font-bold text-white relative z-10 group-hover:translate-x-2 transition-transform duration-300">
-              First year CSE student, exploring AI/ML and building real-world projects
+              First-year CSE student building practical products, shipping fast, and improving with every release
             </h3>
           </motion.div>
 
@@ -144,21 +152,24 @@ const ShortProfile = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-600/30 to-blue-600/30 
+            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-green-500/20 to-cyan-500/20 
                        border border-white/10 hover:border-green-400/30 transition-all duration-300 p-6"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 via-purple-500/10 to-blue-500/10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 via-emerald-500/10 to-cyan-500/10" />
             <div className="relative z-10">
               <h3 className="text-lg font-bold text-white mb-4">
-                Do you want to ask a question?
+                Want to build something together?
               </h3>
-              <button className="w-full py-3 px-4 bg-dark-900/80 border border-white/20 rounded-lg 
+              <button
+                onClick={handleCopyEmail}
+                className="w-full py-3 px-4 bg-dark-900/80 border border-white/20 rounded-lg 
                                text-white text-sm font-medium hover:bg-green-400 hover:text-dark-900 
-                               hover:border-green-400 transition-all duration-300 flex items-center justify-center gap-2">
+                               hover:border-green-400 transition-all duration-300 flex items-center justify-center gap-2"
+              >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
-                Copy my email address
+                {copied ? 'Email copied' : 'Copy my email address'}
               </button>
             </div>
           </motion.div>

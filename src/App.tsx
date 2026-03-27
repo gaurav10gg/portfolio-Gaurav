@@ -78,18 +78,21 @@ function App() {
       {/* Floating Navigation Indicator */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden lg:flex items-center gap-2 
                     px-4 py-2 bg-dark-800/80 backdrop-blur-md rounded-full border border-white/10">
-        <a href="#professional" className="px-3 py-1 text-xs font-medium text-green-400 bg-green-400/10 rounded-full">
-          Professional
+        <a href="#about" className="px-3 py-1 text-xs font-medium text-green-400 bg-green-400/10 rounded-full">
+          About
         </a>
-        <a href="#personal" className="px-3 py-1 text-xs font-medium text-white/60 hover:text-white transition-colors">
-          Personal
+        <a href="#projects" className="px-3 py-1 text-xs font-medium text-white/60 hover:text-white transition-colors">
+          Projects
+        </a>
+        <a href="#contact" className="px-3 py-1 text-xs font-medium text-white/60 hover:text-white transition-colors">
+          Contact
         </a>
       </div>
 
       <div className="min-h-screen bg-dark-900 text-white overflow-x-hidden">
         <Header />
         
-        <main id="professional">
+        <main>
           <Hero />
           <Stats />
           <Education />
