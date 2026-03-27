@@ -49,7 +49,7 @@ const Hero = () => {
               <span className="text-white block mb-2">Hello I&apos;m</span>
               <span className="relative inline-block group cursor-pointer whitespace-nowrap">
                 <span className="text-green-400 relative z-10 transition-colors duration-500 group-hover:text-dark-900 px-2">
-                  gaurav G
+                  Gaurav G
                 </span>
                 <span className="absolute inset-0 bg-green-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </span>
