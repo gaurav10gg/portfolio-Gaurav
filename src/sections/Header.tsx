@@ -1,126 +1,114 @@
-import { useState, useEffect } from 'react';
-import { Globe, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Burger } from '@/components/site/icons';
+import { profile } from '@/data/profile';
+
+const navLinks = [
+  { name: 'Work', id: 'work' },
+  { name: 'Experience', id: 'experience' },
+  { name: 'Stack', id: 'stack' },
+  { name: 'Contact', id: 'contact' },
+];
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('');
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => event.key === 'Escape' && setOpen(false);
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  }, [open]);
+
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.getElementById(link.id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-20% 0px -70% 0px', threshold: 0 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
-  const navLinks = [
-    { name: 'About', href: '#about', active: true },
-    { name: 'Projects', href: '#projects', active: false },
-    { name: 'Contact', href: '#contact', active: false },
-  ];
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-dark-900/90 backdrop-blur-md' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <motion.a
-            href="#"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center"
-          >
-            <h1 className="text-2xl lg:text-3xl font-semibold text-white">
-              Gaurav <span className="text-green-400">G</span>
-            </h1>
-          </motion.a>
+    <header className="nav">
+      <div className="nav__inner container">
+        <a href="#top" className="nav__brand" aria-label={`${profile.name} — home`}>
+          <span className="nav__mark">G</span>
+          <span className="nav__wordmark">{profile.name}</span>
+        </a>
 
-          {/* Desktop Navigation */}
-          <motion.nav
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="hidden lg:flex items-center gap-8"
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`text-sm font-medium transition-all duration-300 hover:text-green-400 ${
-                  link.active
-                    ? 'text-green-400 border-b-2 border-green-400 pb-1'
-                    : 'text-white/80'
-                }`}
-              >
-                {link.name}
-              </a>
-            ))}
-          </motion.nav>
-
-          {/* Language Selector & Mobile Menu */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-4"
-          >
-            {/* Language Button - Desktop */}
-            <button className="hidden lg:flex items-center gap-2 px-4 py-2 bg-green-400 text-dark-900 rounded-full text-sm font-semibold hover:bg-green-500 transition-colors">
-              <Globe className="w-4 h-4" />
-              <span>English</span>
-              <svg className="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </button>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-green-400"
+        <nav className="nav__links" aria-label="Primary">
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className={`nav__link${active === link.id ? ' nav__link--active' : ''}`}
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </motion.div>
+              {link.name}
+            </a>
+          ))}
+        </nav>
+
+        <div className="nav__actions">
+          <a href={profile.resume} download className="btn btn--sm nav__cta">
+            Résumé
+          </a>
+          <button
+            type="button"
+            className="nav__burger"
+            aria-expanded={open}
+            aria-controls="nav-drawer"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => setOpen((value) => !value)}
+          >
+            <Burger open={open} />
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden bg-dark-900/95 backdrop-blur-md border-t border-white/10"
-          >
-            <nav className="flex flex-col p-4 space-y-4">
+      {open && (
+        <>
+          <div id="nav-drawer" className="nav__drawer">
+            <nav className="nav__drawerLinks" aria-label="Mobile">
               {navLinks.map((link) => (
                 <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`text-lg font-medium transition-colors ${
-                    link.active ? 'text-green-400' : 'text-white/80 hover:text-green-400'
-                  }`}
+                  key={link.id}
+                  href={`#${link.id}`}
+                  className={`nav__drawerLink${active === link.id ? ' nav__drawerLink--active' : ''}`}
+                  onClick={() => setOpen(false)}
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  <ArrowRight />
                 </a>
               ))}
-              <button className="flex items-center gap-2 px-4 py-2 bg-green-400 text-dark-900 rounded-full text-sm font-semibold w-fit">
-                <Globe className="w-4 h-4" />
-                <span>English</span>
-              </button>
             </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <div className="nav__drawerFoot">
+              <a href={profile.resume} download className="btn btn--solid btn--block">
+                Download résumé
+                <ArrowRight className="btn__arrow" />
+              </a>
+              <p className="mono nav__drawerNote">
+                {profile.role} · {profile.location}
+              </p>
+            </div>
+          </div>
+          <button type="button" className="nav__scrim" aria-label="Close menu" onClick={() => setOpen(false)} />
+        </>
+      )}
     </header>
   );
 };

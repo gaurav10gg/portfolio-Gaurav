@@ -1,0 +1,33 @@
+/* ==========================================================================
+   App shell
+   ========================================================================== */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__main {
+  padding-top: var(--nav-h);
+  flex: 1;
+}
+
+.skipLink {
+  position: fixed;
+  top: -100px;
+  left: var(--gutter);
+  z-index: 100;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 0.6rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  transition: top var(--t) var(--ease);
+}
+
+.skipLink:focus-visible {
+  top: calc(var(--nav-h) + 8px);
+}

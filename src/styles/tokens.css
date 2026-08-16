@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Design tokens — editorial / brutalist
+   Cream paper, near-black ink, red accent, deep green utility.
+   Ported from the HackClub609 system so both sites share one language.
+   ========================================================================== */
+
+:root {
+  /* --- paper & ink ----------------------------------------------------- */
+  --cream: #ede9e1;
+  --cream-hi: #f3f0ea;
+  --cream-lo: #e3ded4;
+  --ink: #12110f;
+  --ink-2: #2c2b27;
+  --ink-3: #565349;
+  --ink-4: #85817a;
+
+  /* --- accents --------------------------------------------------------- */
+  --red: #e0392a;
+  --red-hi: #ef4a38;
+  --red-lo: #bd2c1f;
+  --green: #146a4b;
+  --green-lo: #0f5439;
+  --yellow: #f7c518;
+
+  /* --- dark surfaces --------------------------------------------------- */
+  --dark: #171614;
+  --dark-2: #0e0d0c;
+  --dark-line: rgba(237, 233, 225, 0.16);
+
+  /* --- rules ----------------------------------------------------------- */
+  --line: var(--ink);
+  --line-soft: rgba(18, 17, 15, 0.15);
+  --line-softer: rgba(18, 17, 15, 0.08);
+  --bw: 1px;
+
+  /* --- type ------------------------------------------------------------ */
+  --font-display: "Inter Tight", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono",
+    monospace;
+
+  --fs-display: clamp(2.45rem, 6.1vw, 4.5rem);
+  --fs-h1: clamp(2rem, 4.6vw, 3.3rem);
+  --fs-h2: clamp(1.65rem, 3.2vw, 2.35rem);
+  --fs-h3: clamp(1.05rem, 1.4vw, 1.2rem);
+  --fs-stat: clamp(2.4rem, 5vw, 3.9rem);
+  --fs-body: 0.9375rem;
+  --fs-small: 0.8125rem;
+  --fs-mono: 0.6875rem;
+  --fs-mono-sm: 0.625rem;
+
+  --lh-display: 0.98;
+  --lh-tight: 1.08;
+  --lh-body: 1.6;
+  --ls-display: -0.032em;
+  --ls-mono: 0.09em;
+
+  /* --- layout ---------------------------------------------------------- */
+  --maxw: 1440px;
+  --gutter: clamp(18px, 3.6vw, 46px);
+  /* Aligns full-bleed sections with the centred container. */
+  --edge: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter)));
+  --nav-h: 58px;
+
+  --sp-section: clamp(3.5rem, 7vw, 6.5rem);
+  --sp-block: clamp(1.75rem, 3vw, 2.75rem);
+
+  /* --- motion ---------------------------------------------------------- */
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --t-fast: 120ms;
+  --t: 180ms;
+  --t-slow: 300ms;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --nav-h: 54px;
+  }
+}
