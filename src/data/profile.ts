@@ -139,11 +139,11 @@ export const projects: Project[] = [
   {
     slug: 'chemml',
     title: 'chemML',
-    kind: 'Reactor surrogate · IIT Kharagpur ML hackathon',
+    kind: 'National finalist · IIT Kharagpur ML hackathon',
     year: '2026',
     blurb:
-      'The training data was a stiff ODE solver, not noisy plant data — so rather than regress on 150 rows I identified the reactor itself, recovering the differential equations and their six physical constants by inverse modelling. The recovered physics explains why 37 rows sit at exactly zero yield: a crossover temperature at 450 K above which the side reaction runs away.',
-    metric: { value: '4.21', label: '10-fold CV RMSE, against 18.44 for the best black-box model' },
+      'The training data was a stiff ODE solver, not noisy plant data — so rather than regress on 150 rows I identified the reactor itself, recovering the differential equations and their six physical constants by inverse modelling. The recovered physics explains why 37 rows sit at exactly zero yield: a crossover temperature at 450 K above which the side reaction runs away. Cross-validated RMSE landed at 4.21, the 11th-lowest in the field — enough to be selected as a national finalist at IIT Kharagpur.',
+    metric: { value: '11th', label: 'Lowest RMSE nationwide — national finalist, IIT Kharagpur' },
     stack: ['Python', 'SciPy', 'Differential evolution', 'NumPy'],
     repo: 'https://github.com/gaurav10gg/chemML',
     mark: 'curve',
